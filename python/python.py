@@ -8,3 +8,7 @@ print("Disk Usage:", psutil.disk_usage('/').percent, "%")
 
 
 
+from datetime import datetime
+
+now = datetime.now()
+print("Current Date & Time:", now)
