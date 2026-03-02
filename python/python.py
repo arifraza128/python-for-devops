@@ -12,3 +12,10 @@ from datetime import datetime
 
 now = datetime.now()
 print("Current Date & Time:", now)
+
+
+file = open("test.txt", "w")
+file.write("This file is created by Python for DevOps practice.")
+file.close()
+
+print("File created successfully")
