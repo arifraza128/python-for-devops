@@ -32,5 +32,21 @@ def check_server(url):
     except requests.exceptions.RequestException:
         print(f"{url} is DOWN")
 
+
+import subprocess
+
+def run_command(command):
+    result = subprocess.run(command, shell=True, capture_output=True, text=True)
+    
+    if result.returncode == 0:
+        print("Command Output:")
+        print(result.stdout)
+    else:
+        print("Error:")
+        print(result.stderr)
+
+if __name__ == "__main__":
+    run_command("docker ps")
+
 if __name__ == "__main__":
     check_server("https://google.com")
