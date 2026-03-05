@@ -50,3 +50,13 @@ if __name__ == "__main__":
 
 if __name__ == "__main__":
     check_server("https://google.com")
+
+
+import os
+
+value = os.getenv("PATH")
+print("PATH Variable:", value)
+
+
+name = input("Enter server name: ")
+print("Deploying to server:", name)
