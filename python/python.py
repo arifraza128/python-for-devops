@@ -1,3 +1,4 @@
+
 print('this is my devops working with python')
 
 import psutil
@@ -60,3 +61,8 @@ print("PATH Variable:", value)
 
 name = input("Enter server name: ")
 print("Deploying to server:", name)
+
+servers = ["server1", "server2", "server3"]
+
+for server in servers:
+    print("Checking status of", server)
