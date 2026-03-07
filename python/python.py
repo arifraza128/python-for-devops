@@ -66,3 +66,11 @@ servers = ["server1", "server2", "server3"]
 
 for server in servers:
     print("Checking status of", server)
+
+
+
+try:
+    file = open("config.txt")
+    print(file.read())
+except:
+    print("File not found")
