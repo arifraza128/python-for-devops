@@ -1,0 +1,19 @@
+name: S3 Backup
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: pip install boto3
+
+    - name: Run Backup Script
+      run: python backup.py
