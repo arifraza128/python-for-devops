@@ -1,1 +1,16 @@
-
+{
+  "aws": {
+    "region": "ap-south-1"
+  },
+  "s3": {
+    "bucket_name": "your-bucket-name",
+    "backup_prefix": "backup/"
+  },
+  "backup": {
+    "source_folder": "data/",
+    "retention_days": 7
+  },
+  "logging": {
+    "log_file": "backup.log"
+  }
+}
