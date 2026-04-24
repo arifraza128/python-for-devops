@@ -36,3 +36,40 @@ def classify_error(text):
     for category, pattern in ERROR_PATTERNS.items():
         if re.search(pattern, text, re.IGNORECASE):
             return category
+return "Unknown Issue"
+
+def analyze_pipelines():
+    summary = defaultdict(int)
+
+    for repo in REPOS:
+        print(f"Repository: {repo}")
+        runs = get_workflow_runs(repo)
+
+        for run in runs[:5]:
+            if run.get("conclusion") != "failure":
+                continue
+
+            print(f"Run: {run.get('name')} | ID: {run.get('id')}")
+            jobs = get_jobs(repo, run.get("id"))
+
+            for job in jobs:
+                if job.get("conclusion") == "failure":
+                    log_reference = job.get("html_url", "")
+                    error_type = classify_error(log_reference)
+
+                    print(f"Job: {job.get('name')}")
+                    print(f"Issue: {error_type}")
+                    print(f"Logs: {log_reference}")
+
+                    summary[error_type] += 1
+
+    return summary
+
+def print_summary(summary):
+    print("Summary")
+    for issue, count in summary.items():
+        print(f"{issue}: {count}")
+
+if __name__ == "__main__":
+    result = analyze_pipelines()
+    print_summary(result)
