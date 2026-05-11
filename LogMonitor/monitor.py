@@ -1,5 +1,6 @@
 import os
 import re
+import config
 import time
 import smtplib
 import requests
